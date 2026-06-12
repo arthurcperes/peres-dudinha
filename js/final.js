@@ -1,81 +1,35 @@
 const finalMessage = `
-Amor,
+amor,
 
-Se você chegou até aqui, significa que viu cada pedacinho dessa surpresa.
+se você chegou ate aqui, já entendeu que isso aqui eh só uma forma de mostrar o tamanho do que você significa pra mim.
 
-E talvez isso seja só um site.
+nossa história não começou no dia em que eu te pedi em namoro. ela começou muito antes, la nos corredores da Fundação Bradesco, quando a gente nem imaginava que um dia ia ficar junto.
 
-Mas para mim, é uma forma de mostrar o quanto você é importante.
+passou tempo, mudaram as salas, vieram conversas novas, a viagem da amaze, os encontros no bebedouro, as risadas, as brincadeiras e ate o famoso "tô no egito com meus amigos". e sem perceber você foi virando a melhor parte dos meus dias.
 
-Porque nossa história não começou no dia em que eu te pedi em namoro.
+hoje eu olho pra tudo isso e vejo que cada detalhe valeu a pena. porque o melhor lugar nunca foi um parque, um shopping, um cinema ou um restaurante.
 
-Ela começou muito antes.
+o melhor lugar sempre foi e sempre será ao seu lado.
 
-Começou nos corredores da Fundação Bradesco.
+obrigado por tudo.
 
-Começou nos dias em que a gente nem imaginava que um dia estaria junto.
+obrigado pelos momentos que vivemos.
 
-Começou quando Deus colocou nossas vidas no mesmo caminho, mesmo que a gente ainda não conseguisse perceber.
+obrigado por ser exatamente quem você eh.
 
-Passaram-se anos.
+e obrigado por me fazer tão feliz.
 
-Vieram novas salas, novos momentos, novas conversas.
+também agradeço a Deus, porque a melhor resposta das minhas orações foi ter colocado você na minha vida.
 
-Veio a viagem da Amaze.
+feliz dia dos namorados amor.
 
-Vieram os encontros no bebedouro.
+eu te amo infinitamente sempre ∞ ❤️
 
-Vieram as risadas.
+hoje.
+amanhã.
+e em todos os dias que ainda vamos viver juntos!
 
-Vieram as brincadeiras.
-
-Veio o famoso "Tô no Egito com meus amigos".
-
-E, sem perceber, você foi se tornando a melhor parte dos meus dias.
-
-Até que chegou o momento em que eu não conseguia mais imaginar minha vida sem você.
-
-E desde então, cada abraço seu virou lar.
-
-Cada sorriso seu virou motivo.
-
-Cada momento ao seu lado virou memória.
-
-Obrigado por tudo.
-
-Obrigado pela sua companhia.
-
-Obrigado pela sua paciência.
-
-Obrigado por cada momento que vivemos.
-
-E obrigado por ser exatamente quem você é.
-
-Se algum dia alguém me perguntar qual foi a melhor coisa que aconteceu na minha vida, a resposta sempre será a mesma:
-
-Você.
-
-Porque o melhor lugar do mundo nunca foi um parque.
-
-Nunca foi um shopping.
-
-Nunca foi um cinema.
-
-Nunca foi um restaurante.
-
-O melhor lugar do mundo sempre foi e sempre será ao seu lado.
-
-Feliz Dia dos Namorados, amor.
-
-Eu te amo. ❤️
-
-Hoje.
-
-Amanhã.
-
-E em todos os dias que ainda vamos viver juntos.
-
-— Arthur ❤️
+— Arthur, (Peres), (pp) ❤️
 `;
 
 function createHeartRain() {

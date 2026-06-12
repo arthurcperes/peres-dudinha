@@ -170,6 +170,13 @@ button {
   line-height: 1.7;
 }
 
+.hero-heart {
+  font-size: 3rem;
+  margin: 15px 0;
+  animation: heartbeat 1.4s infinite;
+  transform-origin: center;
+}
+
 .counter {
   margin: 28px auto 0;
   display: grid;
@@ -660,22 +667,22 @@ button {
 
 .gallery__item {
   margin: 0;
-  background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .gallery__item img {
   width: 100%;
-  height: 320px;
+  height: 500px;
+  display: block;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.gallery__item figcaption {
-  padding: 14px 16px 18px;
-  color: var(--muted);
+.gallery__item:hover img {
+  transform: scale(1.03);
 }
 
 .section--final {
@@ -904,5 +911,31 @@ button {
   .forca__letter {
     min-width: 36px;
     padding: 10px 10px;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.18);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.18);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
