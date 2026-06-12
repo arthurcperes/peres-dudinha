@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arthur & Maria Eduarda</title>
+  <meta name="description" content="Um site interativo de Dia dos Namorados com quiz, história, jogo da forca, roleta, contador ao vivo e mensagem especial." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <header class="hero" id="topo">
+
+  <div class="hero__hero-grid">
+    <div class="hero__video-box">
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="videos/fundo.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="hero__music-card">
+      <p class="hero__music-label"></p>
+      <h2>All of Me — John Legend</h2>
+      <iframe
+        class="hero__music-player"
+        src="https://open.spotify.com/embed/track/3U4isOIWM3VvDubwSI3y7a"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify player"
+      ></iframe>
+      <p class="hero__music-note">
+        Clique em play.
+      </p>
+    </div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Feliz Dia dos Namorados</p>
+    <h1>Peres ❤️ Dudinha</h1>
+    <p class="hero__subtitle">Tempo em que estamos juntos:</p>
+
+    <div class="counter" aria-live="polite">
+      <div class="counter__item">
+        <strong id="countDays">0</strong>
+        <span>dias</span>
+      </div>
+      <div class="counter__item">
+        <strong id="countHours">0</strong>
+        <span>horas</span>
+      </div>
+      <div class="counter__item">
+        <strong id="countMinutes">0</strong>
+        <span>minutos</span>
+      </div>
+      <div class="counter__item">
+        <strong id="countSeconds">0</strong>
+        <span>segundos</span>
+      </div>
+    </div>
+
+    <button class="btn btn--primary" id="startBtn">Começar a surpresa</button>
+  </div>
+</header>
+
+  <main>
+    <section class="section section--quiz hidden" id="quizSection">
+      <div class="section__header">
+        <h2>Quiz do casal</h2>
+        <p>Vamos ver quem lembra melhor da nossa história?</p>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz__card">
+          <p class="quiz__progress" id="quizProgress">Pergunta 1 de 3</p>
+          <h3 class="quiz__question" id="quizQuestion">Carregando pergunta...</h3>
+
+          <div class="quiz__options" id="quizOptions"></div>
+
+          <p class="quiz__feedback" id="quizFeedback"></p>
+
+          <button class="btn btn--secondary hidden" id="quizNextBtn">Avançar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--scratch hidden" id="scratchSection">
+      <div class="section__header">
+        <h2>Raspe e revele</h2>
+        <p>Uma lembrança especial escondida atrás do quadro.</p>
+      </div>
+
+      <div class="scratch">
+        <div class="scratch__frame">
+          <img src="imagens/foto1.jpg" alt="Foto de vocês em um momento especial" class="scratch__image" id="scratchImage" />
+          <canvas id="scratchCanvas"></canvas>
+          <div class="scratch__hint">Raspe o quadrado</div>
+        </div>
+        <button class="btn btn--secondary hidden" id="scratchNextBtn">Avançar</button>
+      </div>
+    </section>
+
+    <section class="section section--scratch hidden" id="scratchSection2">
+      <div class="section__header">
+        <h2>Mais uma lembrança</h2>
+        <p>Raspe para revelar outra foto.</p>
+      </div>
+
+      <div class="scratch">
+        <div class="scratch__frame">
+          <img src="imagens/foto2.jpg" alt="Outra foto especial do casal" class="scratch__image" id="scratchImage2" />
+          <canvas id="scratchCanvas2"></canvas>
+          <div class="scratch__hint">Raspe o quadrado</div>
+        </div>
+        <button class="btn btn--secondary hidden" id="scratchNextBtn2">Avançar</button>
+      </div>
+    </section>
+
+    <section class="section section--scratch hidden" id="scratchSection3">
+      <div class="section__header">
+        <h2>Última lembrança</h2>
+        <p>Mais uma imagem antes do próximo desafio.</p>
+      </div>
+
+      <div class="scratch">
+        <div class="scratch__frame">
+          <img src="imagens/foto3.jpg" alt="Última foto especial do casal" class="scratch__image" id="scratchImage3" />
+          <canvas id="scratchCanvas3"></canvas>
+          <div class="scratch__hint">Raspe o quadrado</div>
+        </div>
+        <button class="btn btn--secondary hidden" id="scratchNextBtn3">Avançar</button>
+      </div>
+    </section>
+
+    <section class="section section--forca hidden" id="forcaSection">
+      <div class="section__header">
+        <h2>Jogo da forca</h2>
+        <p>Dica: é o melhor lugar do mundo.</p>
+      </div>
+
+      <div class="forca">
+        <div class="forca__card">
+          <p class="forca__status" id="forcaStatus">Adivinhe a frase</p>
+          <div class="forca__word" id="forcaWord"></div>
+          <div class="forca__letters" id="forcaLetters"></div>
+          <p class="forca__mistakes" id="forcaMistakes">Erros: 0 de 6</p>
+          <p class="forca__message" id="forcaMessage"></p>
+          <button class="btn btn--secondary hidden" id="forcaNextBtn">Avançar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--roulette hidden" id="rouletteSection">
+      <div class="section__header">
+        <h2>Roleta do próximo passeio</h2>
+        <p>Vamos descobrir onde vai ser o próximo rolê?</p>
+      </div>
+
+      <div class="roulette">
+        <div class="roulette__wheel-wrap">
+          <div class="roulette__pointer"></div>
+          <div class="roulette__wheel" id="rouletteWheel">
+            <div class="roulette__slice roulette__slice--1">
+              <span>Cinema</span>
+            </div>
+            <div class="roulette__slice roulette__slice--2">
+              <span>Restaurante</span>
+            </div>
+            <div class="roulette__slice roulette__slice--3">
+              <span>Shopping</span>
+            </div>
+            <div class="roulette__slice roulette__slice--4">
+              <span>Parque</span>
+            </div>
+            <div class="roulette__slice roulette__slice--5">
+              <span>Academia</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn--primary" id="spinBtn">Girar a roleta</button>
+        <p class="roulette__result" id="rouletteResult"></p>
+
+        <button class="btn btn--secondary hidden" id="rouletteNextBtn">Avançar</button>
+      </div>
+    </section>
+
+    <section class="section section--story hidden" id="storySection">
+      <div class="section__header">
+        <h2>Nossa história</h2>
+        <p>Uma linha do tempo com os momentos mais marcantes.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline__item">
+          <img src="imagens/timeline1.jpg" alt="Foto relacionada à Fundação Bradesco" class="timeline__image" />
+          <div class="timeline__content">
+            <h3>Fundação Bradesco</h3>
+            <p>Foi onde tudo começou, mesmo sem a gente perceber.</p>
+          </div>
+        </article>
+
+        <article class="timeline__item">
+          <img src="imagens/timeline2.jpg" alt="Foto relacionada aos anos sem conversar" class="timeline__image" />
+          <div class="timeline__content">
+            <h3>Anos sem conversar</h3>
+            <p>Passamos muito tempo perto, mas ainda sem nos encontrar de verdade.</p>
+          </div>
+        </article>
+
+        <article class="timeline__item">
+          <img src="imagens/timeline3.jpg" alt="Foto relacionada à viagem da Amaze" class="timeline__image" />
+          <div class="timeline__content">
+            <h3>Viagem da Amaze</h3>
+            <p>Foi ali que alguma coisa começou a mudar.</p>
+          </div>
+        </article>
+
+        <article class="timeline__item">
+          <img src="imagens/timeline4.jpg" alt="Foto relacionada ao bebedouro e às conversas na escola" class="timeline__image" />
+          <div class="timeline__content">
+            <h3>Bebedouro</h3>
+            <p>Nosso ponto de encontro, mesmo com a inspetora tentando separar.</p>
+          </div>
+        </article>
+
+        <article class="timeline__item">
+          <img src="imagens/timeline5.jpg" alt="Foto relacionada ao pedido de namoro" class="timeline__image" />
+          <div class="timeline__content">
+            <h3>Pedido de namoro</h3>
+            <p>Quando tudo virou oficialmente uma história nossa.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--music hidden" id="musicSection">
+      <div class="section__header">
+        <h2>Nossa música</h2>
+        <p>Uma música que combina com a nossa história.</p>
+      </div>
+
+      <div class="music">
+        <div class="music__card">
+          <p class="music__title">Duas Metades — Jorge &amp; Mateus</p>
+          <iframe
+            class="music__iframe"
+            src="https://open.spotify.com/embed/track/6NgW7wzdmgLJ81XPZMoTI6"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Spotify player"
+          ></iframe>
+
+          <p class="music__note">
+            Clique em play.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--letter hidden" id="letterSection">
+      <div class="section__card letter">
+        <h2>Mensagem pro meu amor:</h2>
+        <p>
+          Amor, durante muito tempo nós passamos pelos mesmos lugares sem imaginar o que Deus estava preparando.
+          Hoje, olhando para tudo o que vivemos, eu só consigo agradecer pelo seu jeito, pela sua presença e por tudo que você representa na minha vida.
+          Você faz meus dias ficarem mais leves e minha vida mais bonita.
+        </p>
+        <p>
+          Feliz Dia dos Namorados.
+          Que a gente continue escrevendo essa história com carinho, alegria e muito amor.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--gallery hidden" id="gallerySection">
+      <div class="section__header">
+        <h2>Galeria</h2>
+        <p>Espaço para você trocar pelas fotos que quiser.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="gallery__item">
+          <img src="imagens/capa.jpg" alt="Foto principal do casal para a capa" />
+          <figcaption>Foto de capa</figcaption>
+        </figure>
+
+       <figure class="gallery__item">
+  <img src="imagens/casal-final.jpg" alt="Foto especial do casal" />
+  <figcaption>Um dos nossos momentos favoritos ❤️</figcaption>
+</figure>
+      </div>
+    </section>
+
+    <section class="section section--final hidden" id="finalSection">
+      <div class="section__header">
+        <h2>Antes de ir embora...</h2>
+        <p>Tem mais uma coisa que eu queria te dizer.</p>
+      </div>
+
+      <div class="final">
+        <button class="btn btn--primary" id="loveExplosionBtn">Eu Te Amo ❤️</button>
+
+        <div id="typedLetter" class="typed-letter hidden"></div>
+
+        <div class="final__surprise hidden" id="lastSurprise">
+  <img src="imagens/casal-final-encerramento.jpg" alt="Foto final do casal" />
+</div>
+      </div>
+    </section>
+
+    <div class="bottom-actions">
+      <button class="btn btn--ghost" id="backToTopBtn">Voltar ao topo</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>
+     Para Maria Eduarda Evangelista Garcia ❤️
+    </p>
+
+    <p class="footer-love">
+      Peres ❤️ Dudinha
+    </p>
+
+    <p class="footer-date">
+      05/03/2026 ∞
+    </p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/scratch.js"></script>
+  <script src="js/forca.js"></script>
+  <script src="js/roleta.js"></script>
+  <script src="js/final.js"></script>
+</body>
+</html>
